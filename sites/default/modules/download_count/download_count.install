@@ -1,0 +1,87 @@
+<?php
+// $Id: download_count.install,v 1.6.2.6 2010/07/23 19:41:28 worldfallz Exp $
+
+/**
+ * @file
+ * Installation code for the download_count module.
+ */
+
+/**
+ * Implementation of hook_schema().
+ */
+function download_count_schema() {
+  $schema['download_count'] = array(
+    'description' => t('TODO'),
+    'fields' => array(
+      'dcid' => array(
+        'description' => 'Primary Key: Unique download count id.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'fid' => array(
+        'description' => t('The id from the drupal files table of the file downloaded.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'nid' => array(
+        'description' => t('The nid of the node to which the downloaded file was attached when it was downloaded.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'uid' => array(
+        'description' => t('The uid of the user that downloaded the file.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'vid' => array(
+        'description' => t('The vid of the node revision to which the downloaded file was attached when it was downloaded.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'ip_address' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => NULL,
+        'description' => "The ip address of the downloading user.",
+      ),
+      'referrer' => array(
+        'type' => 'text',
+        'not null' => TRUE,
+        'description' => 'Referrer URI.',
+      ),
+      'timestamp' => array(
+        'description' => t('The date-time the file was downloaded.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('dcid'),
+  );
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function download_count_install() {
+  drupal_install_schema('download_count');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function download_count_uninstall() {
+  drupal_uninstall_schema('download_count');
+  db_query("DELETE FROM {variable} WHERE name LIKE 'download_count_%'");
+}

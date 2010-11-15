@@ -1,0 +1,15 @@
+; $Id: oai2ForCCK.info,v 1.2.4.1 2009/02/03 01:57:36 kingmoore Exp $
+name = "oai2ForCCK"
+description = "This module presents a mechanism, how the information to be accessed through OAI PMH. This version is based on CCK 5.x-1.7 at http://drupal.org/project/cck":
+dependencies[] = content
+core = "6.x"
+
+
+
+
+; Information added by drupal.org packaging script on 2009-02-04
+version = "6.x-1.0-beta1"
+core = "6.x"
+project = "oai2forcck"
+datestamp = "1233711055"
+

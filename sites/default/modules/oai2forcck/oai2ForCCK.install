@@ -1,0 +1,128 @@
+<?PHP
+// $Id: oai2ForCCK.install
+
+/**
+ * Implementation of hook_install()
+ **/
+function oai2ForCCK_install(){
+  $result = array();
+  
+  // Create tables.
+  drupal_install_schema('oai2ForCCK');
+
+  db_query("INSERT INTO {oai2_metadata_formats}
+              (`name`,`metadata_prefix`,`schema`,`metadata_namespace`,`record_prefix`,`record_namespace`)
+            VALUES 
+              ('oai_dc','oai_dc','http://www.openarchives.org/OAI/2.0/oai_dc.xsd','http://www.openarchives.org/OAI/2.0/oai_dc/','dc','http://purl.org/dc/elements/1.1/');"
+          );
+  
+    
+  if (count($result) == count(array_filter($result))) {
+    drupal_set_message(t('The oai2 module has successfully added its tables to the database.'));
+  }
+  else {
+    drupal_set_message(t('Drupal was unable to install the database tables for the oai2 module.'), 'error');
+  } 
+}
+  		
+/**
+ * Implementation of hook_schema().
+ */
+function oai2forCCK_schema() {
+  $schema = array();
+    	
+  $schema['oai2_tokens'] = array(
+	  'fields' => array(
+	     'id' => array(
+         'type' => 'int',
+         'size' => 'big',
+         'not null' => TRUE,
+         'default' => 0,
+         'disp-width' => '20'
+       ),
+       'deliveredrecords' => array(
+         'type' => 'int',
+         'not null' => TRUE,
+         'default' => 0,
+         'disp-width' => '11'
+       ),
+	     'extquery' => array(
+         'type' => 'varchar',
+         'length' => '255',
+         'not null' => FALSE,
+         'default' => ''
+       ),
+	     'queryargs' => array(
+          'type' => 'varchar',
+          'length' => '255',
+          'not null' => FALSE,
+          'default' => ''
+       ),
+	     'metadata_prefix' => array(
+         'type' => 'varchar',
+         'length' => '255',
+         'not null' => FALSE,
+         'default' => ''
+       ),
+	     'timestamp' => array(
+         'type' => 'int',
+         'not null' => TRUE,
+         'default' => 0,
+         'disp-width' => '11'
+       )
+     ),
+	 'primary key' => array('id'),
+  );
+  
+  $schema['oai2_metadata_formats'] = array(
+    'fields' => array(
+      'name' => array(
+        'type' => 'varchar',
+        'length' => '100',
+        'not null' => TRUE,
+        'default' => ''
+      ),
+      'metadata_prefix' => array(
+        'type' => 'varchar',
+        'length' => '100',
+        'not null' => TRUE,
+        'default' => ''
+      ),
+      'schema' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'default' => ''
+      ),
+      'metadata_namespace' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'default' => ''
+      ),
+      'record_prefix' => array(
+        'type' => 'varchar',
+        'length' => '100',
+        'not null' => TRUE,
+        'default' => ''
+      ),
+      'record_namespace' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'default' => '')
+      ),
+    'primary key' => array('name'),
+  );
+ 
+  return $schema; 
+}
+
+/**
+ * Implementation of hook_uninstall()
+ **/
+function oai2ForCCK_uninstall() {
+  
+  drupal_uninstall_schema('oai2ForCCK');
+
+}

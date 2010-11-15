@@ -1,0 +1,19 @@
+; $Id$
+
+name = 960 Grid System - Infoandina
+description = 960 Grid - A blank base theme using the 960 Grid System.
+screenshot = images/screenshot.png
+core = 6.x
+engine = phptemplate
+base theme = ninesixty
+; Theme specific styles. Any sub-themes should override this.
+stylesheets[all][] = styles/styles.css
+stylesheets[all][] = styles/fresh.css
+stylesheets[all][] = styles/block.css
+stylesheets[all][] = styles/fulltext.css
+
+scripts[] = js/jquery.cycle.all.2.72.js
+scripts[] = js/chili-1.7.pack.js
+scripts[] = js/infoandina960.js
+scripts[] = js/gridtoggle.js
+

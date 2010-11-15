@@ -1,0 +1,27 @@
+#fulltext h2.supertitle {
+border-bottom: 1px solid #CCC;
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+border-top: 1px solid #CCC;
+border-top-left-radius: 8px 8px;
+border-top-right-radius: 8px 8px;
+color: #582B8A;
+font-size: 1.5em;
+font-weight: normal;
+margin-bottom: 0px;
+padding-left: 10px;
+background-color:#F46F22;
+color:#fff;
+}
+
+#fulltext-body {
+border-bottom: 1px solid #CCC;
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+padding: 1em;
+}
+
+#fulltext-body h1.title {
+color:#582B8A;
+font-size:16px;
+}
