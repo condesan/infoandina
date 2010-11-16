@@ -60,3 +60,52 @@ function infoandina960_show_view_block($delta) {
 	return "<div id=\"views-". $delta ."\" class=\"block\">" . $output . "</div>";
 	}
 
+function infoandina960_get_date(){
+	$days  = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+	$months = array(1 => "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre");
+	return $days[date('w')] . date('j') . " de " . $months[date('n')] . " del " . date('Y');
+	}
+
+
+function infoandina_960_listar_apellidos_y_nombres($uid) {
+	
+	$sql = "SELECT {content_type_profile}.field_nombres_value, {content_type_profile}.field_apellidos_value FROM {content_type_profile} INNER JOIN {node} ON {content_type_profile}.nid = {node}.nid WHERE {node}.uid = '%d'";
+	
+	$query = db_query($sql, $uid);
+	
+	while($data = db_fetch_array($query)) {
+		
+		$output = $data['field_nombres_value'].' '.$data['field_apellidos_value'];
+		
+		}
+	
+		return $output;
+	
+	}
+
+function infoandina960_listar_autores_en_linea($autores_registrados = array(), $autores_no_registrados = array()) {
+	
+	if (!is_array($autores_registrados)) { $autores_registrados = array(); }
+	if (!is_array($autores_no_registrados)) { $autores_no_registrados = array(); }	
+	$autores = array_merge($autores_registrados, $autores_no_registrados);
+	foreach($autores as $autor) {
+				if (is_array($autor['safe']) && !empty($autor['safe'])) {
+				$lista_autores[$autor['safe']['title']] = l(trim($autor['safe']['title']),'node/'.$autor['nid']);
+				}
+				elseif (!is_array($autor['safe'])) {
+					$lista_autores[$autor['value']] = trim($autor['safe']);			
+				}
+		}
+	if(!empty($lista_autores)) {	
+	ksort($lista_autores);
+	$lista = implode('; ', $lista_autores);
+	$output = "<div class=\"field\"><div class=\"field-label\">Autores: </div><div id=\"autores\">".$lista."</div></div>";
+	}
+	else {
+	$output = '';
+}
+	return $output;
+	
+}	
+
+

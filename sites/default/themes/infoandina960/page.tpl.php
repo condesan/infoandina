@@ -15,7 +15,7 @@
 <body class="<?php print $body_classes; ?> show-grid">
   <div id="page" class="container-16 clear-block">
 		<div id="menu-top" class="grid-16 clear-block">
-				<div class="grid-4 suffix-4 top-menu-left"><?php print format_date(time(), 'custom', 'D M j G:i:s T Y'); ?></div>
+				<div class="grid-5 suffix-3 top-menu-left"><?php print strtoupper(infoandina960_get_date()); ?></div>
 				<div class="grid-8 alpha omega top-menu-right">
 				  <div class="grid-3 prefix-2 alpha omega"><?php if ($icons) { print $icons;} ?></div>
 					<div class="grid-3 alpha omega"><?php if ($search_box) { print $search_box;} ?></div>
@@ -60,20 +60,22 @@
 		<?php if ($is_front) { ?>
 		<div id="slideshow" class="grid-16 clear-block"><?php print infoandina960_show_view_block('noticias-block_1');?></div>
 		<div id="messages" class="grid-16"><?php print $messages; ?></div>
-		<div id="column-left" class="grid-7">
+		<div id="column-left" class="grid-6">
 				<?php print infoandina960_show_view_block('noticias-block_2');?>
 		</div>
-		<div id="column-right" class="grid-9">
+		<div id="column-right" class="grid-10">
 		<div id="column-right-top"></div>
-			<div id="column-right-top-subcolumn-right" class="grid-5 alpha">
+			<div id="column-right-top-subcolumn-right" class="grid-6 alpha">
 				<?php print infoandina960_show_view_block('recursos-block_1');?>
 			</div>
 			<div id="column-right-top-subcolumn-left" class="grid-4 omega">
-					<?php print infoandina960_show_view_block('opinion-block_1');?>	
+					<?php print infoandina960_show_view_block('noticias-block_3');?>	
+					<?php print infoandina960_show_view_block('eventos-calendar_block_1');?>	
 			</div>
 		</div>
 
 		<?php } else { ?> <!--inicio del else -->
+		<div id="barra-morada" class="grid-16"></div>
 	  <div id="menu-principal" class="grid-16"><?php  print theme('links', menu_navigation_links('menu-menu-principal'), array('class' => 'links menu-principal')); ?> </div>
 		<div id="breadcrumb" class="grid-16"> <?php print $breadcrumb; ?> </div>
     <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 4) . ' ' . ns('push-4', !$left, 4); ?>">
@@ -83,7 +85,7 @@
 						<h2 class="supertitle"> <?php print $node_type; ?></h2>
 					<?php endif; ?>
 					<div id="fulltext-body">
-							<?php if ($title): ?>
+							<?php if (isset($title) && !in_array($node->type, array('noticia', 'recurso'))): ?>
 								<h1 class="title" id="page-title"><?php print $title; ?></h1>
 							<?php endif; ?>
 							<?php if ($tabs): ?>
