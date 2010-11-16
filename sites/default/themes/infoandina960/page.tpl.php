@@ -58,11 +58,10 @@
 		<!--inicio del if-->
 		
 		<?php if ($is_front) { ?>
-		<div id="slideshow" class="grid-16 clear-block"><?php print infoandina960_show_view_block('slideshow-block_1');?></div>
-		<div id="slideshow-pager" class="grid-16 clear-block"><div id="nav"></div></div>
+		<div id="slideshow" class="grid-16 clear-block"><?php print infoandina960_show_view_block('noticias-block_1');?></div>
 		<div id="messages" class="grid-16"><?php print $messages; ?></div>
 		<div id="column-left" class="grid-7">
-				<?php print infoandina960_show_view_block('noticias-block_1');?>
+				<?php print infoandina960_show_view_block('noticias-block_2');?>
 		</div>
 		<div id="column-right" class="grid-9">
 		<div id="column-right-top"></div>
