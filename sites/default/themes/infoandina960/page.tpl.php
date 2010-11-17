@@ -12,7 +12,7 @@
   <?php print $scripts; ?>
 </head>
 
-<body class="<?php print $body_classes; ?> show-grid">
+<body class="<?php print $body_classes; ?>">
   <div id="page" class="container-16 clear-block">
 		<div id="menu-top" class="grid-16 clear-block">
 				<div class="grid-5 suffix-3 top-menu-left"><?php print strtoupper(infoandina960_get_date()); ?></div>
@@ -22,7 +22,7 @@
 					
 					</div>
 		</div>
-    <div id="site-header" class="grid-16 clear-block">
+    <div id="site-header" class="grid-16 clear-block" style="height:<?php print ( $is_front ? '70px' : '90px' ); ?>;">
       <div id="branding" class="grid-4 alpha">
       <?php if ($linked_logo_img): ?>
         <span id="logo" class="grid-1 alpha"><?php print $linked_logo_img; ?></span>
@@ -75,19 +75,14 @@
 		</div>
 
 		<?php } else { ?> <!--inicio del else -->
-		<div id="barra-morada" class="grid-16"></div>
 	  <div id="menu-principal" class="grid-16"><?php  print theme('links', menu_navigation_links('menu-menu-principal'), array('class' => 'links menu-principal')); ?> </div>
-		<div id="breadcrumb" class="grid-16"> <?php print $breadcrumb; ?> </div>
     <div id="main" class="column <?php print ns('grid-16', $left, 4, $right, 4) . ' ' . ns('push-4', !$left, 4); ?>">
 				<div id="fulltext">
 					
 					<?php if($title): ?>
-						<h2 class="supertitle"> <?php print $node_type; ?></h2>
+						<h2 class="supertitle"> <?php print $title; ?></h2>
 					<?php endif; ?>
 					<div id="fulltext-body">
-							<?php if (isset($title) && !in_array($node->type, array('noticia', 'recurso'))): ?>
-								<h1 class="title" id="page-title"><?php print $title; ?></h1>
-							<?php endif; ?>
 							<?php if ($tabs): ?>
 								<div class="tabs"><?php print $tabs; ?></div>
 							<?php endif; ?>

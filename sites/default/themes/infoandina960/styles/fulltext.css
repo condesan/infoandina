@@ -24,3 +24,7 @@ border-right: 1px solid #CCC;
 color:#582B8A;
 font-size:16px;
 }
+
+#fulltext-body p {
+margin-bottom:5px;
+}

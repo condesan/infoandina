@@ -15,7 +15,8 @@ $(document).ready(function() {
     }
     // Prevent toggle of you are in a textarea for input field.
     if(target.tagName != "TEXTAREA" && target.tagName != "INPUT" && e.which==71 && e.shiftKey) {
-      $('body').toggleClass('show-grid');
+      //$('body').toggleClass('show-grid');
+			$('body').addClass('show-grid');
     }    
   });
 });

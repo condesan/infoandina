@@ -4,16 +4,16 @@
 function infoandina960_preprocess_page(&$vars, $hook) {
 	#dsm($vars);
 	$icons = array(
-	l(theme('image', path_to_theme() . '/images/' . 'icon_facebook.png'), 'http://facebook.com', array('html' => TRUE)),
-	l(theme('image', path_to_theme() . '/images/' . 'icon_rss.jpg'), 'http://infoandina.org/rss.xml', array('html' => TRUE)),	
-	l(theme('image', path_to_theme() . '/images/' . 'icon_twitter.gif'), 'http://twitter.com', array('html' => TRUE)),	
-	l(theme('image', path_to_theme() . '/images/' . 'icon_youtube.jpg'), 'http://youtube.com', array('html' => TRUE)),	
+	l(theme('image', path_to_theme() . '/images/' . 'icon_facebook.png'), 'http://www.facebook.com/infoandina', array('html' => TRUE, 'attributes' => array('target' => '_blank'))),
+	l(theme('image', path_to_theme() . '/images/' . 'icon_rss.jpg'), 'http://infoandina.org/rss.xml', array('html' => TRUE, 'attributes' => array('target' => '_blank'))),	
+	l(theme('image', path_to_theme() . '/images/' . 'icon_twitter.gif'), 'http://twitter.com/infoandina', array('html' => TRUE,  'attributes' => array('target' => '_blank'))),	
+	l(theme('image', path_to_theme() . '/images/' . 'icon_youtube.jpg'), 'http://www.youtube.com/infoandina', array('html' => TRUE,  'attributes' => array('target' => '_blank'))),	
 	);
 	
 	$vars['icons'] = theme('item_list', $icons, $title = NULL, $type = 'ul', array('class' => 'icons container-inline'));
 	
-	if($vars['template_files'][0] == 'page-node') {
-		$vars['node_type'] = $vars['node']->type;
+	if(($vars['template_files'][0] == 'page-node') && ($vars['node']->type !== 'page')) {
+		$vars['title'] = $vars['node']->type;
 		}
 	
 	}
@@ -63,7 +63,7 @@ function infoandina960_show_view_block($delta) {
 function infoandina960_get_date(){
 	$days  = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
 	$months = array(1 => "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre");
-	return $days[date('w')] . date('j') . " de " . $months[date('n')] . " del " . date('Y');
+	return $days[date('w')] . " " . date('j') . " de " . $months[date('n')] . " del " . date('Y');
 	}
 
 
@@ -92,7 +92,7 @@ function infoandina960_listar_autores_en_linea($autores_registrados = array(), $
 				if (is_array($autor['safe']) && !empty($autor['safe'])) {
 				$lista_autores[$autor['safe']['title']] = l(trim($autor['safe']['title']),'node/'.$autor['nid']);
 				}
-				elseif (!is_array($autor['safe'])) {
+				elseif (!is_array($autor['safe']) && !empty($autor['value'])) {
 					$lista_autores[$autor['value']] = trim($autor['safe']);			
 				}
 		}
@@ -108,4 +108,24 @@ function infoandina960_listar_autores_en_linea($autores_registrados = array(), $
 	
 }	
 
-
+function infoandina960_listar_recursos_relacionados($nid, $title) {
+	
+		$sql = "SELECT nid FROM {content_field_autor} WHERE field_autor_nid = '%d'";
+		 $result = db_query(db_rewrite_sql($sql), $nid);
+		 while ($data = db_fetch_object($result)) {
+		 $noderel = node_load($data->nid);
+		 $list[]=l($noderel->title,'node/'.$noderel->nid);
+         }
+		if (!empty($list)) { $output = "<div class=\"field\"><div class=\"field-label\">" . $title . "</div>" . theme('item_list', $list) . "</div>";}		 
+		else { $output = '';}
+		return $output;
+	}
+	
+	function _limpiar_arreglo($arreglo) {
+	foreach($arreglo as $k => $v) {
+		if(!empty($v)) {
+			$lst[] = $v;
+			}
+		}
+	return $lst;
+	}

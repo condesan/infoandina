@@ -6,4 +6,6 @@ $(document).ready(function(){
 			pagerEvent: 'mouseover',
 			pauseOnPagerHover: true, 
 	});
+  //desactiva grid de 960
+	//$('body').removeClass('show-grid');	
 });
