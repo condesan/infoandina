@@ -9,3 +9,6 @@
 [15-Aug-2010 14:40:31] PHP Fatal error:  Call to undefined function user_access() in /home/infoweb/public_html/sites/default/modules/simplemenu/simplemenu.module on line 37
 [15-Aug-2010 14:40:49] PHP Fatal error:  Call to undefined function user_access() in /home/infoweb/public_html/sites/default/modules/simplemenu/simplemenu.module on line 37
 [15-Aug-2010 14:44:32] PHP Fatal error:  Cannot redeclare system_help() (previously declared in /home/infoweb/public_html/modules/system/system.module:47) in /home/infoweb/public_html/sites/default/modules/system/system.module on line 106
+[25-Nov-2010 09:10:47] PHP Fatal error:  Call to undefined function rdf_db_rdf_namespaces() in /home/infoweb/public_html/sites/default/modules/evoc/evoc.module on line 249
+[25-Nov-2010 09:12:22] PHP Fatal error:  Call to undefined function rdf_db_rdf_namespaces() in /home/infoweb/public_html/sites/default/modules/evoc/evoc.module on line 249
+[25-Nov-2010 09:41:55] PHP Fatal error:  Call to undefined function rdf_db_rdf_namespaces() in /home/infoweb/public_html/sites/default/modules/evoc/evoc.module on line 249

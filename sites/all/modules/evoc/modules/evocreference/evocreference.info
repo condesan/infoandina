@@ -1,0 +1,16 @@
+; $Id: evocreference.info,v 1.1.2.1 2009/02/25 16:00:50 scor Exp $
+name = Evoc Reference
+description = Defines a field type for referencing an RDF class or property from a node.
+dependencies[] = evoc
+dependencies[] = content
+dependencies[] = text
+dependencies[] = optionwidgets
+package = CCK
+core = 6.x
+
+; Information added by drupal.org packaging script on 2010-07-11
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "evoc"
+datestamp = "1278834162"
+
