@@ -15,6 +15,36 @@ function infoandina960_preprocess_page(&$vars, $hook) {
 	if(($vars['template_files'][0] == 'page-node') && ($vars['node']->type !== 'page')) {
 		$vars['title'] = $vars['node']->type;
 		}
+		
+		/*redirección de urls*/
+	$url = $_REQUEST;
+	
+	if ($hook == 'page') {
+	
+	#redirecciona urls de foros en AA en vista modulo de sitio a foros de Drupal
+	if(isset($url['q']) && isset($url['a']) && isset($url['g'])) {
+		unset($_REQUEST['destination']);
+		unset($_REQUEST['q']);	
+		unset($_REQUEST['a']);		
+		drupal_goto('node/'.$url['g']);
+		
+		}
+	#redirecciona direcciones de foros en AA en vista de texto completo a foros en Drupal
+	if($url['q'] == 'foros.shtml' && is_numeric((int)$url['x']) ) {
+		unset($_REQUEST['destination']);
+		unset($_REQUEST['q']);
+		drupal_goto('node/'.$url['x']);
+		}	
+	
+	#redirecciona vista de texto completo en AA basados en modulo de sitio a vista de texto completo en Drupal
+	if(isset($url['q']) && isset($url['apc']) && is_numeric((int)$url['x']) ) {
+		unset($_REQUEST['destination']);
+		unset($_REQUEST['q']);
+		unset($_REQUEST['apc']);
+		drupal_goto('node/'.(int)$url['x']);
+		}	
+	
+	}		
 	
 	}
 
@@ -23,7 +53,7 @@ function infoandina960_preprocess_search_theme_form(&$vars, $hook) {
 	#dsm($vars['form']['search_theme_form']);
   // Remove the "Search this site" label from the form.
   $vars['form']['search_theme_form']['#title'] = t('');
-	$vars['form']['search_theme_form']['#size'] = '14';
+	$vars['form']['search_theme_form']['#size'] = '12';
   
   // Set a default value for text inside the search box field.
   $vars['form']['search_theme_form']['#value'] = t('Buscar');

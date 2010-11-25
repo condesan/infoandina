@@ -40,19 +40,7 @@
     </div>
 
 
-    <div id="site-subheader" class="prefix-1 suffix-1 clear-block">
-    <?php if ($mission): ?>
-      <div id="mission" class="<?php print ns('grid-14', $header, 7); ?>">
-        <?php print $mission; ?>
-      </div>
-    <?php endif; ?>
 
-    <?php if ($header): ?>
-      <div id="header-region" class="region <?php print ns('grid-14', $mission, 7); ?> clear-block">
-        <?php print $header; ?>
-      </div>
-    <?php endif; ?>
-    </div>
     
 		<!--solo se muestra en el home-->
 		<!--inicio del if-->

@@ -11,7 +11,7 @@ base theme = ninesixty
 stylesheets[all][] = styles/styles.css
 stylesheets[all][] = styles/fulltext.css
 stylesheets[all][] = styles/block.css
-
+stylesheets[all][] = styles/foros.css
 
 scripts[] = js/jquery.cycle.all.2.72.js
 scripts[] = js/chili-1.7.pack.js

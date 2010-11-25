@@ -47,4 +47,10 @@ list-style-type:none;
 background-color:#eee;
 }
 
+#views-similarterms-block_1 h2 {
+font-size:1em;
+}
 
+#views-similarterms-block_1 ul li.views-row {
+margin-bottom:1em;
+}

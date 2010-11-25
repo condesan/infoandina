@@ -10,7 +10,7 @@
   <div class="content clear-block grid-12 alpha omega">
     <?php print $picture ?>
 		
- 	 <div id="content-left" class="grid-7 clear-block alpha">
+ 	 <div id="content-left" class="grid-9 clear-block alpha">
 	 <?php print $field_foto_rendered; ?>
 	 <?php print "<div class=\"field\"><div class=\"field-label\">" . $node->title . "</div></div>"; ?>
 	 <?php print $node->content['body']['#value']; ?>
@@ -19,7 +19,7 @@
 	 <?php print infoandina960_listar_recursos_relacionados($node->nid, 'Recursos relacionados'); ?>
 	 <?php print $field_archivo_rendered; ?>
 	 </div>
-	 <div id="content-right" class="grid-5 clear-block omega"><?php print infoandina960_show_view_block('similarterms-block_1'); ?></div>
+	 <div id="content-right" class="grid-3 clear-block omega"><?php print infoandina960_show_view_block('similarterms-block_1'); ?></div>
 	</div>
 
 <?php if ($links): ?>

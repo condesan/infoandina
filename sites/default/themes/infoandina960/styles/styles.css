@@ -47,7 +47,6 @@ text-decoration:none;
 }
 
 #search {
-width:150px;
 padding:0px;
 }
 
@@ -92,8 +91,6 @@ padding-top:3px;
 }
 
 .top-menu-right .item-list {
-width:100px;
-float:right;
 
 }
 
@@ -118,7 +115,6 @@ ul.icons {
 overflow:auto;
 vertical-align:middle;
 padding:0em;
-width:100px;
 margin-bottom:2px;
 }
 

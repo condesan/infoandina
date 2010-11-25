@@ -1,0 +1,14 @@
+#page-forum {
+	margin:0 auto;
+	width: 960px;
+	}
+
+/*
+.forum-template-participants-body ol li {
+	margin-left: 20px;
+	}
+*/
+#page-forum #content-inner #content-area {
+	padding-right:20px;
+	margin-left: 10px;
+	}
